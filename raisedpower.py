@@ -15,6 +15,7 @@ while True:
         while power>0:
             answer=answer*number
             power=power-1
+            print("lousy")
 
         print(answer)
     except:
