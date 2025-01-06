@@ -13,6 +13,8 @@ def check_my_calls(call_roaster,house_officer_name):
 
     row_with_call = []
     col_with_call = []
+    a_and_e_call = 0
+    ward_call = 0
 
     # Iterate through all rows and columns
     for row in sheet.iter_rows(min_row=1, max_row=sheet.max_row, min_col=1, max_col=sheet.max_column):
@@ -25,6 +27,10 @@ def check_my_calls(call_roaster,house_officer_name):
             if type(cell_value) is str and cell_value.count(house_officer_name) > 0:
                 row_with_call.append(cell.row)
                 col_with_call.append(cell.column)
+                if cell.column == 3:
+                    a_and_e_call = a_and_e_call+1
+                else:
+                    ward_call = ward_call+1
                 pass
         for cell in row:
             if cell.row == 1 and cell.column == 1:
@@ -38,7 +44,8 @@ def check_my_calls(call_roaster,house_officer_name):
 
        
         
-    print(row_with_call)       
+    print(len(row_with_call))  
+    print(f'You have {a_and_e_call} A&E calls and {ward_call} ward calls')     
     # # Save the changes to the Excel file
     filename = input('new_filename.xlsx:   ')
     full_filename = f'{filename}.xlsx'
