@@ -1,4 +1,5 @@
-with open("dimension", "r") as file:
+filename = input('enter the text filename (e.g dimension.txt):  ')
+with open(filename, "r") as file:
     dimensions = []
     for line in file:
         words = line.split()
